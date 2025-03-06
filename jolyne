@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Jolyne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            background: #f7d6e0;
+            overflow: hidden;
+        }
+        #contenedor {
+            display: none;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #imagen {
+            width: 100%;
+            max-width: 736px;
+            height: auto;
+            max-height: 90vh;
+            object-fit: cover;
+        }
+        #inicio {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ff69b4;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #ff1493;
+        }
+        h1 {
+            color: #ff69b4;
+            font-size: 32px;
+        }
+        #mensajeFinal {
+            display: none;
+            font-size: 24px;
+            color: #ff1493;
+            animation: latidos 1.5s infinite;
+        }
+        @keyframes latidos {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+<audio autoplay loop>
+    <source src="https://drive.google.com/uc?export=view&id=1ZuvvyOmAyrFy2c_KIQGr4Jil9bFD2bfI" type="audio/mp3">
+</audio>
+<div id="inicio">
+    <h1>Para mi Jolyne</h1>
+    <button onclick="empezar()">Haga click aquí culona</button>
+</div>
+<div id="contenedor">
+    <img id="imagen" src="" alt="Foto de amor">
+    <button onclick="siguiente()">Siguiente</button>
+</div>
+<div id="mensajeFinal">
+    FELIZ CUMPLEAÑOS MI AMOR 🎉💖
+</div>
+<script>
+    let imagenes = [
+        'https://drive.google.com/uc?export=download&id=1G0m69vY0m-tfzdWWx3zbi0os7hbhKpJz',
+        'https://drive.google.com/uc?export=download&id=1w4K2XQUnutwYC_JZppnMEs8jW1l1SYBP',
+        'https://drive.google.com/uc?export=download&id=1cMzBxfxpDAWI1lCjhMyJXDIZMTEdxZKj'
+    ];
+    let actual = 0;
+
+    function empezar() {
+        document.getElementById('inicio').style.display = 'none';
+        document.getElementById('contenedor').style.display = 'flex';
+        document.getElementById('imagen').src = imagenes[actual];
+    }
+
+    function siguiente() {
+        actual++;
+        if (actual < imagenes.length) {
+            document.getElementById('imagen').src = imagenes[actual];
+        } else {
+            document.getElementById('contenedor').style.display = 'none';
+            document.getElementById('mensajeFinal').style.display = 'block';
+        }
+    }
+</script>
+</body>
+</html>
